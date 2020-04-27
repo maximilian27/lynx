@@ -2,21 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TvShowsSearchComponent } from './layout/tv-shows-search/tv-shows-search.component';
-import { TvShowsDetailsComponent } from './layout/tv-shows-details/tv-shows-details.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { TvShowsSearchModule } from './layout/tv-shows-search/tv-shows-search.module';
+import { TvShowsDetailsModule } from './layout/tv-shows-details/tv-shows-details.module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TvShowsSearchComponent,
-    TvShowsDetailsComponent,
+    AppComponent
 ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    TvShowsSearchModule,
+    TvShowsDetailsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

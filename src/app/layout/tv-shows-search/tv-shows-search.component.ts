@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tv-shows-search.component.scss']
 })
 export class TvShowsSearchComponent implements OnInit {
+  public searchValue: string;
+  public tvShows: any[];
 
-  constructor() { }
+  constructor() {
+    this.tvShows = [1, 2, 3, 4];
+  }
 
   ngOnInit(): void {
+
+  }
+
+  onSearchValueChange(value) {
+    this.searchValue = value;
   }
 
 }

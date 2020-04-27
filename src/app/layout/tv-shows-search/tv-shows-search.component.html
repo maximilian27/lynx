@@ -1,1 +1,11 @@
-<p class="text-danger">tv-shows-search works!</p>
+<app-search-form (searchValueChange)="onSearchValueChange($event)"></app-search-form>
+<div *ngIf="searchValue; else noSearchValue">
+    <ng-container *ngFor="let show of tvShows">
+        <app-show-card [tvShow]="show"></app-show-card>
+    </ng-container>
+</div>
+
+<ng-template #noSearchValue>
+    <div>no value</div>
+</ng-template>
+

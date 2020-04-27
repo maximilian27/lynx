@@ -5,6 +5,7 @@ import { TvShowsSearchComponent } from './layout/tv-shows-search/tv-shows-search
 import { TvShowsDetailsComponent } from './layout/tv-shows-details/tv-shows-details.component';
 
 
+
 const routes: Routes = [
   { path: 'search', component: TvShowsSearchComponent },
   { path: 'details', component: TvShowsDetailsComponent },
