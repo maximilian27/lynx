@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="tvShows; else noSearchValue">
+        <ul class="list-group">
+            <li class="list-group-item bg-transparent " *ngFor="let show of tvShows | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                <app-show-card [tvShow]="show"></app-show-card>
+            </li>
+        </ul>
+        <ngb-pagination
+                class="d-flex justify-content-center"
+                [collectionSize]="tvShows.length"
+                [(page)]="page" [maxSize]="5"
+                [rotate]="true" [ellipses]="false"
+                [boundaryLinks]="false">
+        </ngb-pagination>
+    </div>
+
+    <ng-template #noSearchValue>
+        <div class="mt-5 position-relative">
+            <img class="img-fluid" alt="My image name" src="./assets/img/main_page.jpg">
+            <div class="position-absolute logo-title-caption h2">
+                Welcome!
+            </div>
+            <div class="position-absolute logo-caption ">Search for your favourite shows, by simply typing the name in
+                top bar and hitting enter or clicking the search button with the mouse.
+            </div>
+        </div>
+    </ng-template>
+</div>
+
+

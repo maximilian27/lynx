@@ -1,0 +1,10 @@
+<ngb-rating [(rate)]="rate"
+            [starTemplate]="ratingTemplate"
+            [readonly]="true" [max]="10">
+
+</ngb-rating>
+<ng-template #ratingTemplate let-fill="fill">
+    <span class="star" [class.full]="fill === 100">
+        <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+    </span>
+</ng-template>

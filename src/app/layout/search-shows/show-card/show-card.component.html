@@ -1,0 +1,25 @@
+<div class=" bg-transparent border border-dark p-2 d-flex flex-row align-items-stretch">
+<!--    <p>{{tvShow | json}}</p>-->
+    <div class="flex-grow-0 px-2">
+        <a [routerLink]="'/details/' + tvShow.id" (click)="navigateToDetails(tvShow.id)">
+            <img [src]="'https://artworks.thetvdb.com' + tvShow.image" alt="logo" style="max-height: 220px;max-width: 160px" class="img-fluid">
+        </a>
+
+    </div>
+    <div class="flex-grow-1 px-2">
+        <div>
+            <a class="h4" [routerLink]="'/details/' + tvShow.id" (click)="navigateToDetails(tvShow.id)">
+                {{tvShow.seriesName}}
+            </a>
+            <span class="h6 text-muted">{{tvShow.network}}</span>
+            <span class="">,&nbsp;{{tvShow.firstAired}}</span>
+        </div>
+
+
+        <div>
+            <p>{{tvShow.overview}}</p>
+        </div>
+
+    </div>
+
+</div>

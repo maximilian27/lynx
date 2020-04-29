@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark sticky-top" >
+    <a class="navbar-brand mr-auto" href="#">Fixed top</a>
+    <app-search-form (searchValueChange)="onSearchValueChange($event)"></app-search-form>
+    <a class="nav-link text-success pl-3" routerLink="/login" routerLinkActive="active">
+        <span class="text-success">
+             <fa-icon [icon]="faSignOutAlt"></fa-icon>
+        </span>
+        <span>Logout</span>
+    </a>
+</nav>
+

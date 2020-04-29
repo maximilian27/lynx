@@ -1,0 +1,9 @@
+.seasons-list-wrapper {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { /* WebKit */
+         width: 0;
+    }
+}
+

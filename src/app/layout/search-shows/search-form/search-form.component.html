@@ -1,13 +1,12 @@
 <div class="">
-    <br>
     <form
-            class="d-flex flex-row border border-light"
+            class="d-flex flex-row border border-light "
             #searchShows="ngForm" (ngSubmit)="onSubmit()">
 
         <input
                 type="text"
                 placeholder="Search for TV Shows"
-                class="form-control text-white bg-dark flex-grow-1 border-0"
+                class="form-control form-control-sm text-white bg-dark flex-grow-1 border-0"
                 required
                 name="shows"
                 [(ngModel)]="searchValue"
