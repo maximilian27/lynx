@@ -2,7 +2,7 @@
 <!--    <p>{{tvShow | json}}</p>-->
     <div class="flex-grow-0 px-2">
         <a [routerLink]="'/details/' + tvShow.id" (click)="navigateToDetails(tvShow.id)">
-            <img [src]="'https://artworks.thetvdb.com' + tvShow.image" alt="logo" style="max-height: 220px;max-width: 160px" class="img-fluid">
+            <img [src]="'https://artworks.thetvdb.com' + tvShow.image" alt="logo" class="img-fluid show-card-image">
         </a>
 
     </div>
@@ -11,13 +11,13 @@
             <a class="h4" [routerLink]="'/details/' + tvShow.id" (click)="navigateToDetails(tvShow.id)">
                 {{tvShow.seriesName}}
             </a>
-            <span class="h6 text-muted">{{tvShow.network}}</span>
-            <span class="">,&nbsp;{{tvShow.firstAired}}</span>
+            <span class="h6 text-muted">{{tvShow.network ? tvShow.network: 'N/A'}}</span>
+            <span class="">,&nbsp;{{tvShow.firstAired ? tvShow.firstAired: 'N/A'}}</span>
         </div>
 
 
         <div>
-            <p>
+            <p *ngIf="tvShow.overview">
                 {{(showMore) ? tvShow.overview : tvShow.overview | slice:0:600}}
                 <span class="text-muted cursor-pointer" *ngIf="!showMore" (click)="showMore=true">Show More...</span>
             </p>

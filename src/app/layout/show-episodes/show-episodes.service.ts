@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SearchShowsService } from '../search-shows/search-shows.service';
 import { ShowEpisodesBackendService } from './show-episodes-backend.service';
+import { Episode } from './episode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowEpisodesService {
-    private episodesList$: BehaviorSubject<any>;
+    private episodesList$: BehaviorSubject<Episode[]>;
 
     constructor(private searchShowsService: SearchShowsService,
                 private backendService: ShowEpisodesBackendService) {
@@ -17,12 +17,6 @@ export class ShowEpisodesService {
     }
 
     loadEpisodes(season: number | string, id: number) {
-      // const httpOptions = {
-      //   headers: new HttpHeaders(
-      //       {
-      //         Authorization: `Bearer ${this.searchShowsService.token}`
-      //       })
-      // };
 
       this.backendService.getEpisodes(id, season)
           .subscribe((result) => {
@@ -31,11 +25,11 @@ export class ShowEpisodesService {
           });
     }
 
-    setEpisodes(value: any) {
+    setEpisodes(value: Episode[]) {
       this.episodesList$.next(value);
     }
 
-    get episodesList(): Observable<any> {
+    get episodesList(): Observable<Episode[]> {
         return this.episodesList$.asObservable();
     }
-    }
+}

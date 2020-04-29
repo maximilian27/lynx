@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { SearchShowsModule } from '../search-shows/search-shows.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -11,7 +11,7 @@ import { SearchShowsModule } from '../search-shows/search-shows.module';
   declarations: [NavbarComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule,
+    SharedModule,
     RouterModule,
     SearchShowsModule
   ],

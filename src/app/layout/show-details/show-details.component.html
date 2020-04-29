@@ -1,22 +1,31 @@
-<div class="container">
+<div class="container" *ngIf="details">
 
     <div class="row p-3">
-        <div class="col-8 card bg-transparent border border-dark">
+        <div class="col-8 card bg-transparent">
 
             <div class="row">
 
                 <div class="col-9">
                     <div class="py-3">
-                        <div>{{details.seriesName}}</div>
-                        <div>{{details.poster}}</div>
-                        <div>{{details.status}}</div>
-                        <div>{{details.airsDayOfWeek}}</div>
-                        <div>{{details.airsTime }}</div>
-                        <div>{{details.genre}}</div>
+                        <p class="h3">{{details.seriesName ? details.seriesName : 'N/A'}}</p>
+                        <p>
+                            <span class="font-weight-bold">Status:</span> {{details.status ? details.status : 'N/A'}}
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Airs:</span> {{details.airsDayOfWeek ? details.airsDayOfWeek : 'N/A'}}
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Air Time:</span> {{details.airsTime ? details.airsTime : 'N/A'}}
+                        </p>
+                        <p>
+                            <span class="font-weight-bold">Genre:</span> {{details.genre ? details.genre : 'N/A'}}
+                        </p>
                         <div>
+                            <span class="font-weight-bold">Rating: </span>
                             <app-custom-rating [rate]="details.siteRating/2"></app-custom-rating>
+                            <span class="rating-text">({{details.siteRating ? details.siteRating : 'N/A'}})</span>
                         </div>
-                        <div>{{details.overview}}</div>
+                        <p>{{details.overview ? details.overview : 'N/A'}}</p>
 
 
                     </div>
@@ -31,10 +40,10 @@
             </div>
 
         </div>
-        <div class="col-4 card bg-transparent border border-dark seasons-list-wrapper" >
+        <div class="col-4 card bg-transparent seasons-list-wrapper" *ngIf="seasonsList">
             <ul class="list-group">
                 <li *ngFor="let season of seasonsList.airedSeasons"
-                    (click)="showEpisodes(season)"
+                    (click)="showEpisodes(details.id, season)"
                     class="list-group-item bg-dark m-1 cursor-pointer">Season {{season}}
                 </li>
             </ul>

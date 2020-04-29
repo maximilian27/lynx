@@ -1,19 +1,19 @@
 <div class="modal-header bg-dark">
-    <h4 class="modal-title">{{episode.episodeName}}</h4>
+    <h4 class="modal-title">{{episode.episodeName ? episode.episodeName : 'N/A'}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body bg-dark">
     <div class="d-flex justify-content-center">
-        <img [src]="'https://artworks.thetvdb.com/banners/' + episode.filename" class="img-fluid w-100" alt="logo">
+        <img [src]="'https://artworks.thetvdb.com/banners/' + episode.filename" class="img-fluid w-100" alt="banner">
     </div>
     <div>
         <span class="font-weight-bold">Directors: </span>
-        <span>{{episode.directors}}</span>
+        <span>{{episode.directors ? episode.directors : 'N/A'}}</span>
     </div>
     <div>
-        {{episode.overview}}
+        {{episode.overview ? episode.overview : 'N/A'}}
     </div>
 </div>
 <div class="modal-footer bg-dark">

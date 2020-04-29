@@ -9,12 +9,15 @@ import { ShowEpisodesModule } from './layout/show-episodes/show-episodes.module'
 import { NavbarModule } from './layout/navbar/navbar.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/token.interceptor';
+import { LoginComponent } from './layout/login/login.component';
+import { LoginModule } from './layout/login/login.module';
 
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -24,6 +27,7 @@ import { TokenInterceptor } from './shared/token.interceptor';
         ShowDetailsModule,
         ShowEpisodesModule,
         NavbarModule,
+        LoginModule
     ],
     bootstrap: [AppComponent],
     providers: [

@@ -52,8 +52,8 @@ export class ShowDetailsComponent implements  OnDestroy {
         this.subscriptions.unsubscribe();
     }
 
-    showEpisodes(season: string) {
-        this.router.navigate(['/episodes']);
+    showEpisodes(id: number, season: string) {
+        this.router.navigate([`${id}/episodes/${season}`]);
         this.episodesService.loadEpisodes(season, this.details.id);
     }
 

@@ -3,8 +3,9 @@ import { ShowEpisodesService } from './show-episodes.service';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EpisodesDialogComponent } from './episodes-dialog/episodes-dialog.component';
-import {SearchShowsService} from '../search-shows/search-shows.service';
-import {Router} from '@angular/router';
+import { SearchShowsService } from '../search-shows/search-shows.service';
+import { Router } from '@angular/router';
+import { Episode } from './episode';
 
 @Component({
   selector: 'app-show-episodes',
@@ -13,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class ShowEpisodesComponent implements OnDestroy {
     private subscriptions: Subscription;
-    public episodesList: any;
+    public episodesList: Episode[];
 
     constructor(private service: ShowEpisodesService,
                 private modalService: NgbModal,

@@ -1,15 +1,26 @@
-<div class="container">
-    <div class="row m-2 p-2 bg-transparent border border-dark" *ngFor="let episode of episodesList">
-        <div class="col">{{episode.episodeName}}</div>
-        <div class="col">{{episode.firstAired}}</div>
-        <div class="col">
-            <app-custom-rating [rate]="episode.siteRating/2"></app-custom-rating>
-        </div>
-        <div class="col">
-            <img [src]="'https://artworks.thetvdb.com/banners/'+episode.filename" style="max-height: 112px; max-width: 150px" class="img-fluid">
-        </div>
-        <div class="col text-muted cursor-pointer " (click)="openDialog(episode)">
-            Show more..
-        </div>
-    </div>
+<div class="container" *ngIf="episodesList">
+    <ul class="list-group  m-2 p-2" >
+        <li *ngFor="let episode of episodesList;let i = index" class="list-group-item bg-transparent">
+            <div class=" bg-transparent border border-dark p-2 row" >
+                <div class="col-md-8 col-lg-8 col-xl-8">
+                    <p class="h3">{{episode.episodeName ? episode.episodeName : 'N/A'}}</p>
+                    <div>
+                        <p><span class="font-weight-bold">First aired </span> {{episode.firstAired | date:'fullDate'}}</p>
+                    </div>
+                    <div>
+                        <span class="font-weight-bold">Rating: </span>
+                        <app-custom-rating [rate]="episode.siteRating/2"></app-custom-rating>
+                        <span class="rating-text">({{episode.siteRating ? episode.siteRating : 'N/A'}})</span>
+                    </div>
+                    <p class=" text-muted cursor-pointer " (click)="openDialog(episode)">
+                        Show more..
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xl-4">
+                    <img [src]="'https://artworks.thetvdb.com/banners/'+episode.filename" class="img-fluid" alt="banner">
+                </div>
+
+            </div>
+        </li>
+    </ul>
 </div>

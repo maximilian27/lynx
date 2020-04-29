@@ -12,20 +12,6 @@ export class SearchShowsBackendService {
 
   constructor(private http: HttpClient) { }
 
-  getToken(apikey: any, userkey: any, username: any): Observable<any> {
-      console.log('wokrs?');
-      const item = {
-        apikey,
-        userkey,
-        username
-      };
-
-      return this.http.post<any>(`${apiBaseUrl}/login`, item, httpPostOptions)
-          .pipe(
-              tap(() => console.log(`token requested`)),
-              catchError(handleError<any>('getToken'))
-          );
-  }
 
     getShowsList(searchValue: number): Observable<any> {
         return this.http.get<any>(`${apiBaseUrl}/search/series?name=${searchValue}`)

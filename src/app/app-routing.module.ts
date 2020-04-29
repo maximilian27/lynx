@@ -8,17 +8,17 @@ import { ShowEpisodesComponent } from './layout/show-episodes/show-episodes.comp
 
 
 const routes: Routes = [
-  { path: 'search', component: SearchShowsComponent },
-  { path: 'details/:id', component: ShowDetailsComponent },
-  { path: 'episodes', component: ShowEpisodesComponent},
-  { path: '**', redirectTo: '/search', pathMatch: 'full' }
+    { path: 'search', component: SearchShowsComponent },
+    { path: 'details/:id', component: ShowDetailsComponent },
+    { path: ':id/episodes/:season', component: ShowEpisodesComponent},
+    { path: '**', redirectTo: '/search', pathMatch: 'full' }
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ]
+    declarations: [],
+    imports: [
+        CommonModule,
+        RouterModule.forRoot(routes)
+    ]
 })
 export class AppRoutingModule { }
