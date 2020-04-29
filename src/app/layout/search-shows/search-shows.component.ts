@@ -8,7 +8,6 @@ import { Subscription } from 'rxjs';
     templateUrl: './search-shows.component.html',
     styleUrls: ['./search-shows.component.scss'],
     encapsulation: ViewEncapsulation.None,
-
 })
 export class SearchShowsComponent implements OnInit, OnDestroy {
     public tvShows: any[];

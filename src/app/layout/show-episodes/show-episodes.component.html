@@ -1,6 +1,6 @@
 <div class="container" *ngIf="episodesList">
     <ul class="list-group  m-2 p-2" >
-        <li *ngFor="let episode of episodesList;let i = index" class="list-group-item bg-transparent">
+        <li *ngFor="let episode of episodesList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;" class="list-group-item bg-transparent">
             <div class=" bg-transparent border border-dark p-2 row" >
                 <div class="col-md-8 col-lg-8 col-xl-8">
                     <p class="h3">{{episode.episodeName ? episode.episodeName : 'N/A'}}</p>
@@ -22,5 +22,12 @@
 
             </div>
         </li>
+        <ngb-pagination
+                class="d-flex justify-content-center"
+                [collectionSize]="episodesList.length"
+                [(page)]="page" [maxSize]="5"
+                [rotate]="true" [ellipses]="false"
+                [boundaryLinks]="false">
+        </ngb-pagination>
     </ul>
 </div>

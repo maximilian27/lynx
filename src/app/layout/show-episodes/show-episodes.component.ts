@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, ViewEncapsulation} from '@angular/core';
 import { ShowEpisodesService } from './show-episodes.service';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,19 +9,25 @@ import { Episode } from './episode';
 import {LoginService} from '../login/login.service';
 
 @Component({
-  selector: 'app-show-episodes',
-  templateUrl: './show-episodes.component.html',
-  styleUrls: ['./show-episodes.component.scss']
+    selector: 'app-show-episodes',
+    templateUrl: './show-episodes.component.html',
+    styleUrls: ['./show-episodes.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+
 })
 export class ShowEpisodesComponent implements OnDestroy {
     private subscriptions: Subscription;
     public episodesList: Episode[];
+    public page: number;
+    public pageSize: number;
 
     constructor(private service: ShowEpisodesService,
                 private modalService: NgbModal,
                 private loginService: LoginService,
                 private router: Router) {
         this.subscriptions = new Subscription();
+        this.page = 1;
+        this.pageSize = 10;
 
         this.subscriptions.add(this.service.episodesList
             .subscribe(result => {
