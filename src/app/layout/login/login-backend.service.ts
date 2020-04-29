@@ -10,19 +10,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginBackendService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  getToken(apikey: any, userkey: any, username: any): Observable<any> {
-    const item = {
-      apikey,
-      userkey,
-      username
-    };
+    getToken(apikey: any, userkey: any, username: any): Observable<any> {
+      const item = {
+        apikey,
+        userkey,
+        username
+      };
 
-    return this.http.post<any>(`${apiBaseUrl}/login`, item, httpPostOptions)
-        .pipe(
-            tap(() => console.log(`token requested`)),
-            catchError(handleError<any>('getToken'))
-        );
-  }
+      return this.http.post<any>(`${apiBaseUrl}/login`, item, httpPostOptions)
+          .pipe(
+              tap(() => console.log(`token requested`)),
+              catchError(handleError<any>('getToken'))
+          );
+    }
 }

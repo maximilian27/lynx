@@ -4,6 +4,7 @@ import { ShowDetailsService } from './show-details.service';
 import { ShowEpisodesService } from '../show-episodes/show-episodes.service';
 import { Router } from '@angular/router';
 import {SearchShowsService} from '../search-shows/search-shows.service';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'app-tv-shows-details',
@@ -19,7 +20,7 @@ export class ShowDetailsComponent implements  OnDestroy {
     constructor(private service: ShowDetailsService,
                 private episodesService: ShowEpisodesService,
                 private router: Router,
-                private searchShowsService: SearchShowsService,
+                private loginService: LoginService,
 ) {
 
         this.subscriptions = new Subscription();
@@ -37,10 +38,10 @@ export class ShowDetailsComponent implements  OnDestroy {
         );
 
         // todo check if token exists with an guard and redirect to the main page based on that
-        this.subscriptions.add(this.searchShowsService._token
+        this.subscriptions.add(this.loginService._token
             .subscribe(result => {
                 if (!result) {
-                    this.router.navigate(['/search']);
+                    this.router.navigate(['/login']);
                 }
             })
         );

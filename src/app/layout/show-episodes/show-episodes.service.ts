@@ -20,7 +20,6 @@ export class ShowEpisodesService {
 
       this.backendService.getEpisodes(id, season)
           .subscribe((result) => {
-            console.log('episodes', result.data);
             this.setEpisodes(result.data);
           });
     }

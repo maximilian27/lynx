@@ -6,6 +6,7 @@ import { EpisodesDialogComponent } from './episodes-dialog/episodes-dialog.compo
 import { SearchShowsService } from '../search-shows/search-shows.service';
 import { Router } from '@angular/router';
 import { Episode } from './episode';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'app-show-episodes',
@@ -18,7 +19,7 @@ export class ShowEpisodesComponent implements OnDestroy {
 
     constructor(private service: ShowEpisodesService,
                 private modalService: NgbModal,
-                private searchShowsService: SearchShowsService,
+                private loginService: LoginService,
                 private router: Router) {
         this.subscriptions = new Subscription();
 
@@ -28,10 +29,10 @@ export class ShowEpisodesComponent implements OnDestroy {
             })
         );
         // todo check if token exists with an guard and redirect to the main page based on that
-        this.subscriptions.add(this.searchShowsService._token
+        this.subscriptions.add(this.loginService._token
             .subscribe(result => {
                 if (!result) {
-                    this.router.navigate(['/search']);
+                    this.router.navigate(['/login']);
                 }
             })
         );

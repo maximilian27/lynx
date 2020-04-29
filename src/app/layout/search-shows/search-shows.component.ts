@@ -30,7 +30,6 @@ export class SearchShowsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // todo create a login page a get the token based on that. This is just a workaround
-        this.service.loadToken();
     }
 
     ngOnDestroy(): void {

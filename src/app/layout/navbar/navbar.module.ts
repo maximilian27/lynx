@@ -13,7 +13,7 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    SearchShowsModule
+    SearchShowsModule,
   ],
   exports: [NavbarComponent]
 })

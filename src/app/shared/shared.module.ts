@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     exports: [
         CustomRatingComponent,
         NgbModule,
+        FontAwesomeModule
     ]
 })
 export class SharedModule { }

@@ -1,9 +1,9 @@
-<nav class="navbar navbar-dark bg-dark sticky-top" >
+<nav class="navbar navbar-dark bg-dark sticky-top" *ngIf="displayNavbar" >
     <a class="navbar-brand mr-auto" routerLink="/search">
         <img class="img-fluid logo" alt="logo" src="./assets/img/television-icon.png">
     </a>
     <app-search-form *ngIf="displaySearch" (searchValueChange)="onSearchValueChange($event)"></app-search-form>
-    <a class="nav-link text-success pl-3" routerLink="/login" routerLinkActive="active">
+    <a class="nav-link text-success pl-3" routerLink="/login" routerLinkActive="active" (click)="logout()">
         <span class="text-success">
              <fa-icon [icon]="faSignOutAlt"></fa-icon>
         </span>

@@ -6,15 +6,15 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {SearchShowsService} from '../layout/search-shows/search-shows.service';
+import { LoginService } from '../layout/login/login.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-    constructor(private searchShowsService: SearchShowsService) {}
+    constructor(private loginService: LoginService) {}
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        const token = this.searchShowsService.token;
+        const token = this.loginService.token;
 
         if (token) {
           request = request.clone({
