@@ -7,12 +7,14 @@ import { SearchShowsModule } from './layout/search-shows/search-shows.module';
 import { ShowDetailsModule } from './layout/show-details/show-details.module';
 import { ShowEpisodesModule } from './layout/show-episodes/show-episodes.module';
 import { NavbarModule } from './layout/navbar/navbar.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/token.interceptor';
 
 
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -23,6 +25,9 @@ import { NavbarModule } from './layout/navbar/navbar.module';
         ShowEpisodesModule,
         NavbarModule,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    ]
 })
 export class AppModule { }

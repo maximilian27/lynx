@@ -27,8 +27,8 @@ export class SearchShowsBackendService {
           );
   }
 
-    getShowsList(searchValue: number, getOptions: any): Observable<any> {
-        return this.http.get<any>(`${apiBaseUrl}/search/series?name=${searchValue}`, getOptions)
+    getShowsList(searchValue: number): Observable<any> {
+        return this.http.get<any>(`${apiBaseUrl}/search/series?name=${searchValue}`)
             .pipe(
                 tap(_ => console.log('fetched shows')),
                 catchError(handleError<any>('getShowsList', {data: []}))

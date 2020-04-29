@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ShowDetailsService } from '../../show-details/show-details.service';
 
 @Component({
@@ -6,20 +6,18 @@ import { ShowDetailsService } from '../../show-details/show-details.service';
   templateUrl: './show-card.component.html',
   styleUrls: ['./show-card.component.scss']
 })
-export class ShowCardComponent implements OnInit {
-  @Input() tvShow: any;
+export class ShowCardComponent {
+    @Input() tvShow: any;
+    public showMore: boolean;
 
-  constructor(private showDetailsService: ShowDetailsService) { }
+    constructor(private showDetailsService: ShowDetailsService) {
+        this.showMore = false;
+    }
 
-  ngOnInit(): void {
+    navigateToDetails(showId: number) {
 
-  }
-
-  navigateToDetails(showId: number) {
-    // this.router.navigate(['/details']);
-    // alert(typeof  showId);
-    this.showDetailsService.loadDetails(showId);
-    this.showDetailsService.loadSeasons(showId);
-  }
+        this.showDetailsService.loadDetails(showId);
+        this.showDetailsService.loadSeasons(showId);
+    }
 
 }

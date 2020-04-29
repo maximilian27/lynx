@@ -15,6 +15,7 @@ export class SearchShowsComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription;
     public page: number;
     public pageSize: number;
+
     constructor(private service: SearchShowsService) {
         this.subscriptions = new Subscription();
         this.page = 1;
@@ -28,11 +29,11 @@ export class SearchShowsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        // todo create a login page a get the token based on that. This is just a workaround
         this.service.loadToken();
     }
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe();
     }
-
 }

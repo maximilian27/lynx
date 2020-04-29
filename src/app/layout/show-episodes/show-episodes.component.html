@@ -2,7 +2,9 @@
     <div class="row m-2 p-2 bg-transparent border border-dark" *ngFor="let episode of episodesList">
         <div class="col">{{episode.episodeName}}</div>
         <div class="col">{{episode.firstAired}}</div>
-        <div class="col">{{episode.siteRating}}</div>
+        <div class="col">
+            <app-custom-rating [rate]="episode.siteRating/2"></app-custom-rating>
+        </div>
         <div class="col">
             <img [src]="'https://artworks.thetvdb.com/banners/'+episode.filename" style="max-height: 112px; max-width: 150px" class="img-fluid">
         </div>

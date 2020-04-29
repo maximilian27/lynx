@@ -17,47 +17,47 @@ export class SearchShowsService {
 
     }
 
-  loadToken() {
+    // todo login page to get credentials, this is a temporary workaround
+    loadToken() {
       this.backendService.getToken('8d78281694597960adbbfa53723e6587', '5EA69128B1BD67.52508310', 'Maximilian Both')
           .subscribe((result) => {
             this.setToken(result.token);
           });
-  }
+    }
 
-  setToken(token: string) {
+    setToken(token: string) {
      this.token$.next(token);
-  }
+    }
 
-  get token(): string {
+    get token(): string {
      return this.token$.getValue();
-  }
+    }
 
-  searchShows(value: any) {
+    get _token(): Observable<any> {
+        return this.token$.asObservable();
+    }
 
-      const httpOptions = {
-          headers: new HttpHeaders(
-            {
-              Authorization: `Bearer ${this.token}`
-          })
-      };
+    searchShows(value: any) {
 
-      this.backendService.getShowsList(value, httpOptions)
+      // const httpOptions = {
+      //     headers: new HttpHeaders(
+      //       {
+      //         Authorization: `Bearer ${this.token}`
+      //     })
+      // };
+
+      this.backendService.getShowsList(value)
         .subscribe((result) => {
           console.log('tv shows!', result);
           this.setShowList(result.data);
         });
-  }
+    }
 
-  setShowList(value: any) {
+    setShowList(value: any) {
       this.showsList$.next(value);
-  }
+    }
 
-  get showsList(): Observable<any> {
+    get showsList(): Observable<any> {
       return this.showsList$.asObservable();
-  }
-
-
-
-
-
+    }
 }

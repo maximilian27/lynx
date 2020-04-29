@@ -17,7 +17,10 @@
 
 
         <div>
-            <p>{{tvShow.overview}}</p>
+            <p>
+                {{(showMore) ? tvShow.overview : tvShow.overview | slice:0:600}}
+                <span class="text-muted cursor-pointer" *ngIf="!showMore" (click)="showMore=true">Show More...</span>
+            </p>
         </div>
 
     </div>

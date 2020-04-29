@@ -20,14 +20,8 @@ export class ShowDetailsService {
 
     loadDetails(id: number) {
         // alert(id + this.searchShowsService.token);
-        const httpOptions = {
-            headers: new HttpHeaders(
-              {
-                Authorization: `Bearer ${this.searchShowsService.token}`
-            })
-        };
 
-        this.backendService.getDetails(id, httpOptions)
+        this.backendService.getDetails(id)
             .subscribe((result) => {
                 this.setDetails(result.data);
             });
@@ -42,15 +36,7 @@ export class ShowDetailsService {
     }
 
     loadSeasons(id: number) {
-        // alert(id + this.searchShowsService.token);
-        const httpOptions = {
-            headers: new HttpHeaders(
-                {
-                    Authorization: `Bearer ${this.searchShowsService.token}`
-                })
-        };
-
-        this.backendService.getSeasons(id, httpOptions)
+        this.backendService.getSeasons(id)
             .subscribe((result) => {
                 // this.setDetails(result.data);
                 this.setSeasons(result.data);

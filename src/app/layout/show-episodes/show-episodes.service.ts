@@ -17,14 +17,14 @@ export class ShowEpisodesService {
     }
 
     loadEpisodes(season: number | string, id: number) {
-      const httpOptions = {
-        headers: new HttpHeaders(
-            {
-              Authorization: `Bearer ${this.searchShowsService.token}`
-            })
-      };
+      // const httpOptions = {
+      //   headers: new HttpHeaders(
+      //       {
+      //         Authorization: `Bearer ${this.searchShowsService.token}`
+      //       })
+      // };
 
-      this.backendService.getEpisodes(id, season, httpOptions)
+      this.backendService.getEpisodes(id, season)
           .subscribe((result) => {
             console.log('episodes', result.data);
             this.setEpisodes(result.data);

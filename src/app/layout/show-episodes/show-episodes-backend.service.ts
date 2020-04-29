@@ -12,8 +12,8 @@ export class ShowEpisodesBackendService {
 
   constructor(private http: HttpClient) { }
 
-  getEpisodes(id: number, season: number | string, httpOptions: any): Observable<any> {
-    return this.http.get<any>(`${apiBaseUrl}/series/${id}/episodes/query?airedSeason=${season}`, httpOptions)
+  getEpisodes(id: number, season: number | string): Observable<any> {
+    return this.http.get<any>(`${apiBaseUrl}/series/${id}/episodes/query?airedSeason=${season}`)
         .pipe(
             tap(_ => console.log('fetched seasons')),
             catchError(handleError<any>('getSeasons', {data: []}))
