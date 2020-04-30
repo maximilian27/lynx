@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginBackendService } from './login-backend.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { LoginBackendService } from './login-backend.service';
 export class LoginService {
     private token$: BehaviorSubject<string>;
 
-    constructor(private backendService: LoginBackendService) {
+    constructor(private backendService: LoginBackendService,
+                private router: Router) {
         this.token$ = new BehaviorSubject<string>(null);
 
       }
@@ -17,7 +19,8 @@ export class LoginService {
     loadToken() {
         this.backendService.getToken('8d78281694597960adbbfa53723e6587', '5EA69128B1BD67.52508310', 'Maximilian Both')
             .subscribe((result) => {
-              this.setToken(result.token);
+                this.setToken(result.token);
+                this.router.navigate(['/search']);
             });
     }
 

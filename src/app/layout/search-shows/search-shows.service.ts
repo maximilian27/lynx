@@ -14,12 +14,11 @@ export class SearchShowsService {
 
     }
 
-    searchShows(value: any) {
-
-          this.backendService.getShowsList(value)
-                .subscribe((result) => {
-                  this.setShowList(result.data);
-                });
+    searchShows(searchValue: any) {
+        this.backendService.getShowsList(searchValue)
+            .subscribe((result) => {
+              this.setShowList(result.data);
+            });
     }
 
     setShowList(value: any) {

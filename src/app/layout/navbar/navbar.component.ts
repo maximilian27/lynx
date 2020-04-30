@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { SearchShowsService } from '../search-shows/search-shows.service';
 import { NavigationStart, Router } from '@angular/router';
-import { LoginService } from '../login/login.service';
 
 
 @Component({
@@ -12,13 +11,11 @@ import { LoginService } from '../login/login.service';
 })
 export class NavbarComponent {
     public faSignOutAlt = faSignOutAlt;
-    public searchValue: string;
     public displaySearch: boolean;
     public displayNavbar: boolean;
 
     constructor(private searchShowsService: SearchShowsService,
-                private router: Router,
-                private loginService: LoginService) {
+                private router: Router) {
         this.router.events.subscribe(value => {
             if (value instanceof NavigationStart) {
                 console.log(value.url); // your current route
@@ -38,11 +35,11 @@ export class NavbarComponent {
 
 
     onSearchValueChange(value) {
-        this.searchValue = value;
         this.searchShowsService.searchShows(value);
     }
 
     logout() {
-       this.loginService.setToken(null);
+        this.searchShowsService.setShowList(null);
     }
+
 }

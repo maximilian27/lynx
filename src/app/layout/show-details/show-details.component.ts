@@ -1,9 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShowDetailsService } from './show-details.service';
 import { ShowEpisodesService } from '../show-episodes/show-episodes.service';
 import { Router } from '@angular/router';
-import {SearchShowsService} from '../search-shows/search-shows.service';
 import {LoginService} from '../login/login.service';
 
 @Component({
@@ -11,7 +10,7 @@ import {LoginService} from '../login/login.service';
   templateUrl: './show-details.component.html',
   styleUrls: ['./show-details.component.scss']
 })
-export class ShowDetailsComponent implements  OnDestroy {
+export class ShowDetailsComponent implements OnDestroy, OnInit {
     private subscriptions: Subscription;
     public details: any;
     public seasonsList: any;
@@ -24,16 +23,18 @@ export class ShowDetailsComponent implements  OnDestroy {
 ) {
 
         this.subscriptions = new Subscription();
+    }
 
+    ngOnInit(): void {
         this.subscriptions.add(this.service.details
             .subscribe(result => {
-              this.details = result;
+                this.details = result;
             })
         );
 
         this.subscriptions.add(this.service.seasonsList
             .subscribe(result => {
-              this.seasonsList = result;
+                this.seasonsList = result;
             })
         );
 
@@ -45,7 +46,6 @@ export class ShowDetailsComponent implements  OnDestroy {
                 }
             })
         );
-
     }
 
 

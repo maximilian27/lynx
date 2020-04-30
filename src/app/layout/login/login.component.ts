@@ -13,12 +13,10 @@ export class LoginComponent {
     public faUser = faUser;
     public faKey = faKey;
 
-    constructor(private service: LoginService,
-                private router: Router) { }
+    constructor(private service: LoginService) { }
 
     login() {
         this.service.loadToken();
-        this.router.navigate(['/search']);
     }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { SearchShowsService } from './search-shows.service';
 import { Subscription } from 'rxjs';
+import {Router} from '@angular/router';
+import {LoginService} from '../login/login.service';
 
 
 @Component({
@@ -15,20 +17,28 @@ export class SearchShowsComponent implements OnInit, OnDestroy {
     public page: number;
     public pageSize: number;
 
-    constructor(private service: SearchShowsService) {
+    constructor(private service: SearchShowsService,
+                private router: Router,
+                private loginService: LoginService) {
         this.subscriptions = new Subscription();
         this.page = 1;
         this.pageSize = 10;
+    }
 
+    ngOnInit(): void {
         this.subscriptions.add(this.service.showsList
             .subscribe(result => {
                 this.tvShows = result;
             })
         );
-    }
 
-    ngOnInit(): void {
-        // todo create a login page a get the token based on that. This is just a workaround
+        this.subscriptions.add(this.loginService._token
+            .subscribe(result => {
+                if (!result) {
+                    this.router.navigate(['/login']);
+                }
+            })
+        );
     }
 
     ngOnDestroy(): void {
