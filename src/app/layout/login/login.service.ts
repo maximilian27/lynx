@@ -20,9 +20,8 @@ export class LoginService {
         this.backendService.getToken('8d78281694597960adbbfa53723e6587', '5EA69128B1BD67.52508310', 'Maximilian Both')
             .subscribe((result) => {
                 this.setToken(result.token);
+                this.router.navigate(['/search']);
             });
-      this.router.navigate(['/search']);
-
     }
 
     setToken(token: string) {

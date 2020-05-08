@@ -32,13 +32,13 @@ export class SearchShowsComponent implements OnInit, OnDestroy {
             })
         );
 
-        // this.subscriptions.add(this.loginService._token
-        //     .subscribe(result => {
-        //         if (!result) {
-        //             this.router.navigate(['/login']);
-        //         }
-        //     })
-        // );
+        this.subscriptions.add(this.loginService._token
+            .subscribe(result => {
+                if (!result) {
+                    this.router.navigate(['/login']);
+                }
+            })
+        );
     }
 
     ngOnDestroy(): void {
