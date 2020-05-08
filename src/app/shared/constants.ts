@@ -1,4 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment.prod';
 
 export const httpPostOptions = {
     headers: new HttpHeaders(
@@ -7,4 +8,6 @@ export const httpPostOptions = {
         })
 };
 
-export const apiBaseUrl = '/api';
+// export const apiBaseUrl = '/api';
+export const apiBaseUrl = environment.backend.baseURL;
+
