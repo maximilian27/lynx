@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve ",
-    "build": "ng build",
-    "buildProd": "ng build --prod --output-path docs --base-href /lynx/",
+    "build": "ng build --output-path docs --base-href /technical-challenge/",
+    "buildProd": "ng build --prod --output-path docs --base-href /technical-challenge/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
