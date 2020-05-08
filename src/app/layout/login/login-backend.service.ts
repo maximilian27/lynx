@@ -22,7 +22,7 @@ export class LoginBackendService {
       return this.http.post<any>(`${apiBaseUrl}/login`, item, httpPostOptions)
           .pipe(
               tap(() => console.log(`token requested`)),
-              catchError(handleError<any>('getToken'))
+              catchError(handleError<any>('getToken', null))
           );
     }
 }
